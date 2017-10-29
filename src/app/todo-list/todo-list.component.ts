@@ -26,10 +26,14 @@ export class TodoListComponent implements OnInit {
 
 		let todoObj = {
 			id: this.currentID,
-			description: todoDescription
+			description: todoDescription,
+			checked: false
 		}
 
-		this.todos.push(todoObj);
+		this._todoService.addTodo(todoObj);
+
+		//Refresh list
+		this.todos = this._todoService.getTodos();
 
 	}
 

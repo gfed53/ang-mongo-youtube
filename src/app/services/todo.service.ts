@@ -23,15 +23,13 @@ export class TodoService{
 
 
 	getTodos(): Todo[] {
+		console.log('getTodos running from service');
 		return MOCK_TODOS;
 	}
 
 	addTodo(todo: Todo): void {
+		console.log('addTodos running from service');
 		MOCK_TODOS.push(todo);
-	}
-
-	refresh(todos: Todo[]){
-		//
 	}
 
 
