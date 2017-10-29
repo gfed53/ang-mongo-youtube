@@ -8,6 +8,10 @@ import { MOCK_TODOS } from '../mockData';
 
 @Injectable()
 export class TodoService{
+
+	//Probably won't need this once we start working with Mongo..
+	public todos: Todo[] = Array.from(MOCK_TODOS);
+
 	constructor(http: Http){}
 
 	/*Define methods for:
@@ -24,12 +28,21 @@ export class TodoService{
 
 	getTodos(): Todo[] {
 		console.log('getTodos running from service');
-		return MOCK_TODOS;
+		return this.todos;
 	}
 
 	addTodo(todo: Todo): void {
-		console.log('addTodos running from service');
-		MOCK_TODOS.push(todo);
+		console.log('addTodo running from service');
+		this.todos.push(todo);
+	}
+
+	deleteTodo(_todo: Todo): void {
+		console.log('deleteTodo running from service');
+		this.todos = this.todos.filter(todo => {
+			return todo.id !== _todo.id;
+		});
+
+
 	}
 
 

@@ -20,6 +20,8 @@ export class TodoListComponent implements OnInit {
 
 	public currentID: number;
 
+	public todoInput: string;
+
 	addTodo(todoDescription: string): void{
 
 		this.currentID++;
@@ -32,9 +34,19 @@ export class TodoListComponent implements OnInit {
 
 		this._todoService.addTodo(todoObj);
 
-		//Refresh list
+		// Refresh list
 		this.todos = this._todoService.getTodos();
 
+		//Clear input field
+		this.todoInput = "";
+
+	}
+
+	deleteTodo(todo: Todo): void {
+		this._todoService.deleteTodo(todo);
+
+		// Refresh list
+		this.todos = this._todoService.getTodos();
 	}
 
 
