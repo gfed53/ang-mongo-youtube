@@ -1,6 +1,8 @@
 <div>
 	<h1>Todo List</h1>
 	<!-- Input to add todos -->
+	<input [(ngModel)]="todoInput">
+	<button (click)="addTodo(todoInput)">Add to List</button>
 
 	<!-- List of our todos -->
 	<ul>

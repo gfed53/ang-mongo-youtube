@@ -22,4 +22,13 @@ describe('TodoListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it should get list of todos
+
+
 });
+
+// Describe addTodo
+// it should add item to list of Todos
+// // list of items should be refreshed (once we pull from MongoDB)
+

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+
+// Services
+import { TodoService } from '../services/todo.service';
+
 import { Todo } from '../types/todo';
 import { MOCK_TODOS } from '../mockData';
+
+
 
 @Component({
   selector: 'app-todo-list',
@@ -10,17 +16,33 @@ import { MOCK_TODOS } from '../mockData';
 })
 export class TodoListComponent implements OnInit {
 
-	todos: Todo[];
+	public todos: Todo[];
+
+	public currentID: number;
+
+	addTodo(todoDescription: string): void{
+
+		this.currentID++;
+
+		let todoObj = {
+			id: this.currentID,
+			description: todoDescription
+		}
+
+		this.todos.push(todoObj);
+
+	}
 
 
 
 
-  constructor() { }
+  constructor(private _todoService: TodoService) { }
 
   ngOnInit() {
   	console.log('TodoList oninit');
-  	this.todos = MOCK_TODOS;
+  	this.todos = this._todoService.getTodos();
   	console.log('this.todos',this.todos);
+  	this.currentID = this.todos.length;
   }
 
 }
