@@ -2,4 +2,11 @@
 	<h1>Todo List</h1>
 	<!-- Input to add todos -->
 
+	<!-- List of our todos -->
+	<ul>
+		<li *ngFor="let todo of todos">
+			{{ todo.description }}
+		</li>
+	</ul>
+
 </div>
