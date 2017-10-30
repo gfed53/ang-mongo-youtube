@@ -23,8 +23,8 @@ router.get('/todos', function(req, res) {
 
 router.post('/todos', function(req, res){
 	Todo.create({
-        description: req.body.description,
-        checked: false
+        _description: req.body._description,
+        _checked: false
     }, function(err, item) {
         if (err) {
             return res.status(500).json({

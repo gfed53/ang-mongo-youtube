@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { Http } from '@angular/http';
+
+import { Observable } from 'rxjs/Observable.js';
 import 'rxjs/add/operator/map';
 
 import { Todo } from '../types/todo';
@@ -26,7 +28,7 @@ export class TodoService{
 
 
 
-	getTodos(): any {
+	getTodos(): Observable<Todo[]> {
 		console.log('getTodos running from service');
 		//Retrieve mongodb collection from route
 		return this._http.get('/api/todos')
@@ -34,9 +36,11 @@ export class TodoService{
 			
 	}
 
-	addTodo(todo: Todo): void {
+	addTodo(description: string): Observable<any> {
 		console.log('addTodo running from service');
-		this.todos.push(todo);
+		return this._http.post('/api/todos', {
+			_description: description
+		}).map((res) => res.json());
 	}
 
 	updateTodo(todo: Todo): void {

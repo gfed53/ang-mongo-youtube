@@ -30,18 +30,21 @@ export class TodoListComponent implements OnInit {
 
 	addTodo(todoDescription: string): void{
 
-		let todoObj = {
-			description: todoDescription,
-			checked: false
-		}
+		// let todoObj = {
+		// 	description: todoDescription
+		// };
 
-		this._todoService.addTodo(todoObj);
+		this._todoService.addTodo(todoDescription)
+			.subscribe(todo => {
+				console.log('new todo:', todo);
 
-		// Refresh list
-		this.getTodos();
+				// Refresh list
+				this.getTodos();
 
-		//Clear input field
-		this.todoInput = "";
+				//Clear input field
+				this.todoInput = '';
+
+			});
 
 	}
 

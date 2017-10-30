@@ -1,6 +1,6 @@
 export class Todo {
-	id?: string;
-	description: string;
-	checked: boolean;
+	_id?: string;
+	_description: string;
+	_checked: boolean;
 	// date: Date;
 }
