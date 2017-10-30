@@ -18,16 +18,11 @@ export class TodoListComponent implements OnInit {
 
 	public todos: Todo[];
 
-	public currentID: number;
-
 	public todoInput: string;
 
 	addTodo(todoDescription: string): void{
 
-		this.currentID++;
-
 		let todoObj = {
-			id: this.currentID,
 			description: todoDescription,
 			checked: false
 		}
@@ -64,8 +59,7 @@ export class TodoListComponent implements OnInit {
   ngOnInit() {
   	console.log('TodoList oninit');
   	this.todos = this._todoService.getTodos();
-  	console.log('this.todos',this.todos);
-  	this.currentID = this.todos.length;
+  	console.log('this.todos', this.todos);
   }
 
 }

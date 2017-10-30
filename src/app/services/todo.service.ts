@@ -39,19 +39,16 @@ export class TodoService{
 	updateTodo(todo: Todo): void {
 		console.log('updateTodo running from service');
 		// Toggles checked for passed todo
-		this.todos.forEach(item => {
-			if(item.id === todo.id){
-				item.checked = !item.checked;
-			}
-		});
+		//Handling by mongo now?
 
 	}
 
 	deleteTodo(_todo: Todo): void {
 		console.log('deleteTodo running from service');
-		this.todos = this.todos.filter(todo => {
-			return todo.id !== _todo.id;
-		});
+		// this.todos = this.todos.filter(todo => {
+		// 	return todo.id !== _todo.id;
+		// });
+		//Handling by mongo now?
 
 	}
 

@@ -5,6 +5,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 const config = require('./server/config.js');
 
@@ -32,7 +33,35 @@ app.set('port', config.PORT);
  */
 const server = http.createServer(app);
 
+
+//****** Mongoose
+
+var runServer = function(callback) {
+    mongoose.connect(config.DATABASE_URL, function(err) {
+        if (err && callback) {
+            return callback(err);
+        }
+
+        server.listen(config.PORT, function() {
+            console.log('Listening on localhost:' + config.PORT);
+            if (callback) {
+                callback();
+            }
+        });
+    });
+};
+
+if (require.main === module) {
+    runServer(function(err) {
+        if (err) {
+            console.error(err);
+        }
+    });
+}
+
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(config.PORT, () => console.log(`API running on localhost:${config.PORT}`));
+// server.listen(config.PORT, () => console.log(`API running on localhost:${config.PORT}`));
+
+
