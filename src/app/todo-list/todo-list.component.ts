@@ -42,6 +42,13 @@ export class TodoListComponent implements OnInit {
 
 	}
 
+	updateTodo(todo: Todo): void {
+		this._todoService.updateTodo(todo);
+
+		// Refresh list
+		this.todos = this._todoService.getTodos();
+	}
+
 	deleteTodo(todo: Todo): void {
 		this._todoService.deleteTodo(todo);
 

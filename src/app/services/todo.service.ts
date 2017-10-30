@@ -21,8 +21,8 @@ export class TodoService{
 	 deleting a Todo
 	*/
 
-	//Get list of existing todos
-	//Maybe hardcode a list of todos for now?
+	// Get list of existing todos
+	// Maybe hardcode a list of todos for now?
 
 
 
@@ -36,12 +36,22 @@ export class TodoService{
 		this.todos.push(todo);
 	}
 
+	updateTodo(todo: Todo): void {
+		console.log('updateTodo running from service');
+		// Toggles checked for passed todo
+		this.todos.forEach(item => {
+			if(item.id === todo.id){
+				item.checked = !item.checked;
+			}
+		});
+
+	}
+
 	deleteTodo(_todo: Todo): void {
 		console.log('deleteTodo running from service');
 		this.todos = this.todos.filter(todo => {
 			return todo.id !== _todo.id;
 		});
-
 
 	}
 
