@@ -20,6 +20,14 @@ export class TodoListComponent implements OnInit {
 
 	public todoInput: string;
 
+	getTodos(): void {
+		this._todoService.getTodos()
+			.subscribe(todos => {
+				console.log('in subscribe, todos: ', todos);
+				this.todos = todos;
+			});
+	}
+
 	addTodo(todoDescription: string): void{
 
 		let todoObj = {
@@ -30,7 +38,7 @@ export class TodoListComponent implements OnInit {
 		this._todoService.addTodo(todoObj);
 
 		// Refresh list
-		this.todos = this._todoService.getTodos();
+		this.getTodos();
 
 		//Clear input field
 		this.todoInput = "";
@@ -41,14 +49,14 @@ export class TodoListComponent implements OnInit {
 		this._todoService.updateTodo(todo);
 
 		// Refresh list
-		this.todos = this._todoService.getTodos();
+		this.getTodos();
 	}
 
 	deleteTodo(todo: Todo): void {
 		this._todoService.deleteTodo(todo);
 
 		// Refresh list
-		this.todos = this._todoService.getTodos();
+		this.getTodos();
 	}
 
 
@@ -58,7 +66,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
   	console.log('TodoList oninit');
-  	this.todos = this._todoService.getTodos();
+  	this.getTodos();
   	console.log('this.todos', this.todos);
   }
 

@@ -9,8 +9,6 @@ const config = require('../config');
 
 
 
-
-
 router.get('/todos', function(req, res) {
     Todo.find(function(err, todos) {
         if (err) {
@@ -69,4 +67,6 @@ router.delete('/todos/:id', function(req,res) {
 		res.status(200).json(item);
 	});
 });
+
+module.exports = router;
 

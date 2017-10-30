@@ -28,7 +28,13 @@ describe('TodoListComponent', () => {
 
 });
 
+// Describe getTodos
+// // it should fetch a list of todos from MongoDB collection
+// // it should set fetched list to our public todos variable
+
 // Describe addTodo
 // it should add item to list of Todos
 // // list of items should be refreshed (once we pull from MongoDB)
+
+// Describe 
 

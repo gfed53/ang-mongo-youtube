@@ -10,9 +10,9 @@ import { MOCK_TODOS } from '../mockData';
 export class TodoService{
 
 	//Probably won't need this once we start working with Mongo..
-	public todos: Todo[] = Array.from(MOCK_TODOS);
+	public todos: Todo[];
 
-	constructor(http: Http){}
+	constructor(private _http: Http){}
 
 	/*Define methods for:
 	 getting list of Todos
@@ -26,9 +26,12 @@ export class TodoService{
 
 
 
-	getTodos(): Todo[] {
+	getTodos(): any {
 		console.log('getTodos running from service');
-		return this.todos;
+		//Retrieve mongodb collection from route
+		return this._http.get('/api/todos')
+						.map((res) => res.json());
+			
 	}
 
 	addTodo(todo: Todo): void {
