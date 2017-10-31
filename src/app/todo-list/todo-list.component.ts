@@ -52,7 +52,7 @@ export class TodoListComponent implements OnInit {
 		this._todoService.updateTodo(todo)
 			.subscribe(todo => {
 				console.log('updated todo:', todo);
-				
+
 				// Refresh list
 				this.getTodos();
 
@@ -62,10 +62,14 @@ export class TodoListComponent implements OnInit {
 	}
 
 	deleteTodo(todo: Todo): void {
-		this._todoService.deleteTodo(todo);
+		this._todoService.deleteTodo(todo)
+			.subscribe(todo => {
+				console.log('deleted todo:', todo);
 
-		// Refresh list
-		this.getTodos();
+				// Refresh list
+				this.getTodos();
+
+			});
 	}
 
 

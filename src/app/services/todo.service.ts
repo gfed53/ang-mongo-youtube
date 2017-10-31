@@ -43,14 +43,14 @@ export class TodoService{
 		}).map((res) => res.json());
 	}
 
-	updateTodo(todo: Todo): Observable<any> {
+	updateTodo(_todo: Todo): Observable<any> {
 		console.log('updateTodo running from service');
-		let id = todo._id;
+		let id = _todo._id;
 		let url = `/api/todos/${id}`;
 
 		return this._http.put(url, {
-			_id: todo._id,
-			_checked: !todo._checked
+			_id: _todo._id,
+			_checked: !_todo._checked
 		})
 			.map((res) => res.json());
 		// Toggles checked for passed todo
@@ -58,12 +58,13 @@ export class TodoService{
 
 	}
 
-	deleteTodo(_todo: Todo): void {
+	deleteTodo(_todo: Todo): Observable<any> {
 		console.log('deleteTodo running from service');
-		// this.todos = this.todos.filter(todo => {
-		// 	return todo.id !== _todo.id;
-		// });
-		// Handling by mongo now?
+		let id = _todo._id;
+		let url = `/api/todos/${id}`;
+
+		return this._http.delete(url)
+			.map((res) => res.json());
 
 	}
 
