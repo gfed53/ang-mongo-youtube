@@ -49,10 +49,16 @@ export class TodoListComponent implements OnInit {
 	}
 
 	updateTodo(todo: Todo): void {
-		this._todoService.updateTodo(todo);
+		this._todoService.updateTodo(todo)
+			.subscribe(todo => {
+				console.log('updated todo:', todo);
+				
+				// Refresh list
+				this.getTodos();
 
-		// Refresh list
-		this.getTodos();
+			});
+
+		
 	}
 
 	deleteTodo(todo: Todo): void {

@@ -39,12 +39,12 @@ router.put('/todos/:id', function(req,res) {
 	console.log('put req params:', req.params);
 	console.log('put req body:', req.body);
 	// console.log(req.body);
-	if(req.params.id !== req.body.id){
+	if(req.params.id !== req.body._id){
 		return res.status(400).json({
 			message: 'Bad Request, Hombre'
 		});
 	}
-	Item.findOneAndUpdate({_id: req.params.id}, {checked: !checked}, function(err,item){
+	Todo.findOneAndUpdate({_id: req.params.id}, {_checked: req.body._checked}, function(err,item){
 		console.log('updated item:', item);
 		if(err || !item) {
 			return res.status(500).json({
@@ -58,7 +58,7 @@ router.put('/todos/:id', function(req,res) {
 router.delete('/todos/:id', function(req,res) {
 	console.log(req.params);
 	console.log(typeof req.params.id);
-	Item.findOneAndRemove({_id: req.params.id}, function(err, item){
+	Todo.findOneAndRemove({_id: req.params.id}, function(err, item){
 		if(err || !item){
 			return res.status(500).json({
 				message: 'Internal Server Error'

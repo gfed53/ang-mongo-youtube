@@ -43,10 +43,18 @@ export class TodoService{
 		}).map((res) => res.json());
 	}
 
-	updateTodo(todo: Todo): void {
+	updateTodo(todo: Todo): Observable<any> {
 		console.log('updateTodo running from service');
+		let id = todo._id;
+		let url = `/api/todos/${id}`;
+
+		return this._http.put(url, {
+			_id: todo._id,
+			_checked: !todo._checked
+		})
+			.map((res) => res.json());
 		// Toggles checked for passed todo
-		//Handling by mongo now?
+		// Handling by mongo now?
 
 	}
 
@@ -55,7 +63,7 @@ export class TodoService{
 		// this.todos = this.todos.filter(todo => {
 		// 	return todo.id !== _todo.id;
 		// });
-		//Handling by mongo now?
+		// Handling by mongo now?
 
 	}
 
