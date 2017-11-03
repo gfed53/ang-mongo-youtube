@@ -12,6 +12,7 @@ const config = require('./server/config.js');
 // Get our API routes
 const api = require('./server/routes/api');
 
+// Create express app
 const app = express();
 
 // Parsers for POST data
@@ -31,15 +32,15 @@ app.get('*', (req, res) => {
 
 app.set('port', config.PORT);
 
-/**
- * Create HTTP server.
- */
+
+// Create HTTP server.
 const server = http.createServer(app);
 
 
 //****** Mongoose
 
 var runServer = function(callback) {
+		// Must be running MongoDB if running locally!
     mongoose.connect(config.DATABASE_URL, function(err) {
         if (err && callback) {
             return callback(err);
@@ -61,10 +62,5 @@ if (require.main === module) {
         }
     });
 }
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-// server.listen(config.PORT, () => console.log(`API running on localhost:${config.PORT}`));
 
 

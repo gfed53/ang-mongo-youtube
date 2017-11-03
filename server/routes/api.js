@@ -8,7 +8,7 @@ const Todo = require('../schemas/Todo');
 const config = require('../config');
 
 
-
+// Grabs list of todos from db (if any)
 router.get('/todos', function(req, res) {
     Todo.find(function(err, todos) {
         if (err) {
@@ -21,6 +21,7 @@ router.get('/todos', function(req, res) {
     });
 });
 
+// Adds a new todo to the db
 router.post('/todos', function(req, res){
 	Todo.create({
         _description: req.body._description,
@@ -35,10 +36,10 @@ router.post('/todos', function(req, res){
     });
 });
 
+// Alters the checked/unchecked state of todo of id param
 router.put('/todos/:id', function(req,res) {
 	console.log('put req params:', req.params);
 	console.log('put req body:', req.body);
-	// console.log(req.body);
 	if(req.params.id !== req.body._id){
 		return res.status(400).json({
 			message: 'Bad Request, Hombre'
@@ -55,6 +56,7 @@ router.put('/todos/:id', function(req,res) {
 	});
 });
 
+// Deletes todo of id param from the db
 router.delete('/todos/:id', function(req,res) {
 	console.log(req.params);
 	console.log(typeof req.params.id);

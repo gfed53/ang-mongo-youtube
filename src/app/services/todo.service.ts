@@ -53,8 +53,6 @@ export class TodoService{
 			_checked: !_todo._checked
 		})
 			.map((res) => res.json());
-		// Toggles checked for passed todo
-		// Handling by mongo now?
 
 	}
 
