@@ -1,6 +1,6 @@
 # AngMongoTest: A Simple TODO app using MongoDB
 
-This can also be used as a template for future MEAN stack projects.
+This can also be used as a template or guide for future MEAN stack projects.
 
 ## For the future...
 

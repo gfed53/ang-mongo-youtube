@@ -1,9 +1,31 @@
+// CONFIGURE THIS!!!
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
 exports.PORT = process.env.PORT || 3000;
 
 exports.DATABASE_URL = process.env.DATABASE_URL ||
 global.DATABASE_URL ||
 (process.env.NODE_ENV === 'production' ?
-	'mlab-link-here' :
-	'mongodb://localhost/todos');
+	'x' :
+	'x');
 
-//mongodb://gfed123:873gfed@ds155841.mlab.com:55841/heavenly-whirlwind
+
+// mLab (production):
+
+// mongodb://mLab_USER_NAME:PASSWORD@ds#.mlab.com:#/DB-NAME
+
+// eg. 
+// mongodb://gfed123:notmypassword@ds155841.mlab.com:55841/heavenly-whirlwind
+
+
+// Local:
+
+// mongodb://localhost/COLLECTION_NAME
+
+// eg. 
+// mongodb://localhost/todos
