@@ -1,14 +1,14 @@
-import { AppPage } from './app.po';
+import { AngMongoYoutubePage } from './app.po';
 
-describe('ang-mongo-test App', () => {
-  let page: AppPage;
+describe('ang-mongo-youtube App', function() {
+  let page: AngMongoYoutubePage;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new AngMongoYoutubePage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });

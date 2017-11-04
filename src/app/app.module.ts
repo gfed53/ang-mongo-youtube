@@ -7,22 +7,28 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoComponent } from './todo/todo.component';
+import { VideoSearchComponent } from './video-search/video-search.component';
+import { SearchComponent } from './search/search.component';
 
 // Services
 import { TodoService } from './services/todo.service';
+import { SearchService } from './services/search.service';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [TodoService],
+  providers: [TodoService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
