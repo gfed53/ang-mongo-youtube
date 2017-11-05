@@ -1,6 +1,7 @@
 // jshint esversion: 6
 
 const express = require('express');
+const axios = require('axios');
 const router = express.Router();
 
 const config = require('../config');
@@ -10,10 +11,30 @@ const config = require('../config');
 router.post('/search-videos', function(req, res) {
     console.log('req.body',req.body);
 
-
-    //mock for now
+    let _url = 'https://www.googleapis.com/youtube/v3/search';
     let _q = req.body._q;
-    res.json({answer: `you searched for ${_q}`});
+
+    let _req = {
+			key: config.KEYS.googKey,
+			part: 'snippet',
+			maxResults: 50,
+			q: _q,
+			type: 'video',
+			videoEmbeddable: true,
+		};
+
+    axios.get(_url, {
+    	params: _req
+    })
+    .then(_res => {
+    	console.log('_res', _res);
+    	res.json(_res.data);
+    })
+    .catch((error) => {
+		  console.log('error', error);
+		});
+    
+    
 });
 
 module.exports = router;

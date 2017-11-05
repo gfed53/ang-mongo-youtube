@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   	console.log('q', f.value.search);
   	this.searchService.getVideos(f.value.search)
   	.subscribe(res => {
-  		console.log('res',res);
+  		console.log('res', res);
   	});
 
   }
