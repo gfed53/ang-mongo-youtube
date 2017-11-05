@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { SearchService } from '../services/search.service';
 
@@ -11,8 +12,14 @@ export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService) { }
 
-  searchVideo(){
+  searchVideo(f: NgForm){
   	console.log('searchVideo from search component');
+  	console.log('q', f.value.search);
+  	this.searchService.getVideos(f.value.search)
+  	.subscribe(res => {
+  		console.log('res',res);
+  	});
+
   }
 
   ngOnInit() {

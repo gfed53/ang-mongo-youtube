@@ -11,6 +11,7 @@ const config = require('./server/config.js');
 
 // Get our API routes
 const api = require('./server/routes/api');
+const youtube_api = require('./server/routes/youtube-api');
 
 // Create express app
 const app = express();
@@ -24,6 +25,8 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
 app.use('/api', api);
+app.use('/youtube-api', youtube_api);
+
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

@@ -10,9 +10,13 @@ export class SearchService {
 	constructor(private _http: Http){}
 
 	//Will use backend to make API requests
-	getVideos(q){
+	getVideos(q): Observable<any> {
+		console.log('search service: getVideos');
 		console.log('q',q);
 
+		return this._http.post('/youtube-api/search-videos', {
+			_q: q
+		}).map(res => res.json());
 	}
 
 }
