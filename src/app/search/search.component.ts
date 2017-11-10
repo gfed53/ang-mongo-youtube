@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService) { }
 
-  searchVideo(f: NgForm){
+  searchVideo(f: NgForm): void {
   	console.log('searchVideo from search component');
   	console.log('q', f.value.search);
   	this.searchService.getVideos(f.value.search)
