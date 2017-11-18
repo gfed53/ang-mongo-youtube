@@ -1,0 +1,11 @@
+@import '../assets/grid/simple-grid.css'; 
+@import '../assets/scss/_variables';
+
+
+// Test
+@media screen and ($tablet) {
+	h1 {
+		font-size: 3em;
+	}
+}
+

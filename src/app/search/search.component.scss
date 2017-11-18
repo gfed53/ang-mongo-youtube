@@ -1,0 +1,8 @@
+@import '../../assets/scss/_variables';
+
+// Test
+@media screen and ($tablet) {
+	form {
+		background-color: teal; 
+	}
+}
